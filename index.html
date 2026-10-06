@@ -4,7 +4,7 @@
         <p>Pick a game</p>
 
         <button id="stop">Stop</button>
-        <button>Bar</button>
+        <button id="bar">Bar</button>
         <button>Count</button>
         <button>Tap</button>
         <div id="game"></div>
@@ -14,8 +14,10 @@
     </body>
     <script>
     let stopButton = document.getElementById("stop");
+    let bar = document.getElementById("bar");
     let score=0;
     let maxScore=0;
+    document.getElementById("score").textContent=score+" / "+maxScore;
 
     stopButton.onclick = function() {
         let target = Math.random() * 10;
@@ -52,6 +54,16 @@
             <p>You we ${difference} away!</p>
             `
         }
+    };
+
+    bar.onclick = function() {
+        game.innerHTML = `
+            <h2>BAR</h2>
+            <div id="barGame">
+                <span id="marker">|</span>
+            </div>
+            <button id="barStop">STOP</button>
+        `;
     };
     </script>
 </html>
