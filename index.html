@@ -9,11 +9,13 @@
         <button>Tap</button>
         <div id="game"></div>
 
-        <p>Score: 0</p>
+        <p>Score: <span id="score">0 / 0</span></p>
         
     </body>
     <script>
     let stopButton = document.getElementById("stop");
+    let score=0;
+    let maxScore=0;
 
     stopButton.onclick = function() {
         let target = Math.random() * 10;
@@ -30,7 +32,7 @@
             runningTime+=0.01;
             document.getElementById("timer").textContent = runningTime.toFixed(2);
             
-            if (running >=10) {
+            if (runningTime >=10) {
                 runningTime=0;
             }
         }, 10);
@@ -39,7 +41,13 @@
             
             let difference = Math.abs(runningTime - target);
             difference =  difference.toFixed(2);
-
+            maxScore+=100;
+            let points = Math.round(100-difference*10);
+            if(points<0){
+                points=0;
+            }
+            score+=points;
+            document.getElementById("score").textContent=score+" / "+maxScore;
             game.innerHTML += `
             <p>You we ${difference} away!</p>
             `
