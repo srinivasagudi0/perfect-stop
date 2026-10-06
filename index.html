@@ -3,11 +3,29 @@
         <h1>Perfect Stop</h1>
         <p>Pick a game</p>
 
-        <button>Stop</button>
+        <button id="stop">Stop</button>
         <button>Bar</button>
         <button>Count</button>
         <button>Tap</button>
+        <div id="game"></div>
 
         <p>Score: 0</p>
+        
     </body>
+    <script>
+    let stopButton = document.getElementById("stop");
+    let game = document.getElementById("game");
+
+    stopButton.onclick = function() {
+        let target = Math.random() * 10;
+        target = target.toFixed(2);
+
+        game.innerHTML = `
+            <h2>STOP</h2>
+            <p>Target: ${target}</p>
+            <h1>0.00</h1>
+            <button>STOP</button>
+        `;
+    };
+    </script>
 </html>
