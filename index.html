@@ -24,7 +24,7 @@
             <h2>STOP</h2>
             <p>Target: ${target}</p>
             <h1 id="timer">0.00</h1>
-            <button>STOP</button>
+            <button id="hit">STOP</button>
         `;
         let interval = setInterval(function() {
             runningTime+=0.01;
@@ -34,6 +34,16 @@
                 runningTime=0;
             }
         }, 10);
+        document.getElementById("hit").onclick = function() {
+            clearInterval(interval);
+            
+            let difference = Math.abs(runningTime - target);
+            difference =  difference.toFixed(2);
+
+            game.innerHTML += `
+            <p>You we ${difference} away!</p>
+            `
+        }
     };
     </script>
 </html>
