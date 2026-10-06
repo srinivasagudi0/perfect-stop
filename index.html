@@ -14,18 +14,26 @@
     </body>
     <script>
     let stopButton = document.getElementById("stop");
-    let game = document.getElementById("game");
 
     stopButton.onclick = function() {
         let target = Math.random() * 10;
         target = target.toFixed(2);
+        let runningTime = 0;
 
         game.innerHTML = `
             <h2>STOP</h2>
             <p>Target: ${target}</p>
-            <h1>0.00</h1>
+            <h1 id="timer">0.00</h1>
             <button>STOP</button>
         `;
+        let interval = setInterval(function() {
+            runningTime+=0.01;
+            document.getElementById("timer").textContent = runningTime.toFixed(2);
+            
+            if (running >=10) {
+                runningTime=0;
+            }
+        }, 10);
     };
     </script>
 </html>
