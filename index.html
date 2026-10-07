@@ -1,4 +1,19 @@
 <html>
+    <style>
+        #barGame{
+            width:300px;
+            border:2px solid;
+            height:40px;
+        }
+        #marker{
+            position:relative;
+            left:0;
+        }
+        #target{
+            position:relative;
+            left:45%;
+        }
+    </style>
     <body>
         <h1>Perfect Stop</h1>
         <p>Pick a game</p>
@@ -57,13 +72,24 @@
     };
 
     bar.onclick = function() {
+        let position =0;
+        let direction=1;
         game.innerHTML = `
             <h2>BAR</h2>
             <div id="barGame">
                 <span id="marker">|</span>
+                <span id="target">🎯</span>
             </div>
             <button id="barStop">STOP</button>
         `;
+        let barInterval = setInterval(function() {
+            position +=direction;
+
+            if (position >=95 || position<=0) {
+                direction *= -1;
+            }
+            document.getElementById("marker").style.left = position+"%";
+        },10)
     };
     </script>
 </html>
