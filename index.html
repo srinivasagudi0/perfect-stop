@@ -4,14 +4,15 @@
             width:300px;
             border:2px solid;
             height:40px;
+            position: relative;
         }
         #marker{
-            position:relative;
+            position:absolute;
             left:0;
         }
         #target{
-            position:relative;
-            left:45%;
+            position:absolute;
+            left:50%;
         }
     </style>
     <body>
@@ -90,6 +91,19 @@
             }
             document.getElementById("marker").style.left = position+"%";
         },10)
+
+        document.getElementById("barStop").onclick= function() {
+            clearInterval(barInterval);
+            let points=Math.round(100-Math.abs(position-50)*2);
+            if(points<0){
+                points=0;
+            }
+            score+=points;
+            maxScore+=100;
+
+            document.getElementById("score").textContent=score+" / "+maxScore;
+            game.innerHTML +=`<p>+${points} points!</p>`;
+        }
     };
     </script>
 </html>
