@@ -113,7 +113,33 @@
         <p>Stop at 5 seconds</p>
         <h1 id="countTimer">0.00</h1>
         <button id="countStop">STOP</button>
-        `
+        `;
+
+        let countInterval = setInterval(function() {
+            countTime += 0.1;
+            if(countTime <=1) {
+                document.getElementById("counterTimer").textContent = countTime.toFixed(2);
+            }else{
+                document.getElementById("countTimer").textContent ="???";
+            }
+        },10);
+
+        document.getElementById("countStop").onclick=function(){
+            clearInterval(interval);
+
+            let difference=Math.abs(countTime-5);
+            let points=Math.round(100-difference*20);
+
+            if(points<0) {points=0;}
+            score+=points;
+            maxScore+=100;
+
+            document.getElementById("score").textContent=score+" / "+maxScore;
+            game.innerHTML+=`
+                <p>You stopped at ${countTime.toFixed(2)}</p>
+                <p>+${points} points</p>
+            `;
+        }
     }
     </script>
 </html>
