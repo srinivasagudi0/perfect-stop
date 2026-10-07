@@ -21,7 +21,7 @@
 
         <button id="stop">Stop</button>
         <button id="bar">Bar</button>
-        <button>Count</button>
+        <button id="count">Count</button>
         <button>Tap</button>
         <div id="game"></div>
 
@@ -105,5 +105,15 @@
             game.innerHTML +=`<p>+${points} points!</p>`;
         }
     };
+    let count = document.getElementById("count");
+    count.onclick = function() {
+        let count = document.getElementById("count");
+        game.innerHTML=`
+        <h2>COUNT</h2>
+        <p>Stop at 5 seconds</p>
+        <h1 id="countTimer">0.00</h1>
+        <button id="countStop">STOP</button>
+        `
+    }
     </script>
 </html>
