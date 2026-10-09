@@ -18,11 +18,12 @@
     <body>
         <h1>Perfect Stop</h1>
         <p>Pick a game</p>
+        <p>The game starts right as you press the button</p>
 
         <button id="stop">Stop</button>
         <button id="bar">Bar</button>
         <button id="count">Count</button>
-        <button>Tap</button>
+        <button id="tap">Tap</button>
         <div id="game"></div>
 
         <p>Score: <span id="score">0 / 0</span></p>
@@ -141,6 +142,15 @@
                 <p>+${points} points</p>
             `;
         }
+    }
+
+    let tap = document.getElementById("tap");
+    tap.onclick = function() {
+        game.innerHTML= `
+            <h2>TAP</h2>
+            <p>Hit the target 5 times</p>
+            <p>Hits: 0</p>
+        `
     }
     </script>
 </html>
