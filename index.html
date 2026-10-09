@@ -6,6 +6,11 @@
             height:40px;
             position: relative;
         }
+        .tapArea #target {
+            position: absolute;
+            left:0;
+            top:0;
+        }
         #marker{
             position:absolute;
             left:0;
@@ -13,10 +18,7 @@
         #target{
             position:absolute;
             left:50%;
-        }
-        #target {
-            left: 0;
-        }
+        }     
         .tapArea {
             width:300px;
             height: 250px;
@@ -176,6 +178,11 @@
         document.getElementById("hit").textContent = hits;
         if (hits === 5) {
             let seconds = (performance.now() - startTime) / 1000;
+            let points = Math.round(100 - seconds *10);
+            score+=points;
+            maxScore+=100;
+            document.getElementById("score").textContent = score + "/" + maxScore
+
             game.innerHTML = `
                 <p>Completed in ${seconds.toFixed(2)} seconds!</p>
             `;
