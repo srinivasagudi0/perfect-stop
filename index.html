@@ -167,9 +167,9 @@
             </div>
             <br/>
         `;
-    }
-    let hits = 0;
-    document.getElementById("target").onclick = function() {
+        let hits = 0;
+        let target = document.getElementById("target");
+        target.onclick = function() {
         hits++;
         document.getElementById("hit").textContent = hits;
 
@@ -177,6 +177,8 @@
         let y = Math.random() * 170;
         document.getElementById("target").style.left = x + "px";
         document.getElementById("target").style.top = y+"px";
+        }
     }
+   
     </script>
 </html>
