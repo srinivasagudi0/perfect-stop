@@ -117,16 +117,16 @@
         `;
 
         let countInterval = setInterval(function() {
-            countTime += 0.1;
+            countTime += 0.01;
             if(countTime <=1) {
-                document.getElementById("counterTimer").textContent = countTime.toFixed(2);
+                document.getElementById("countTimer").textContent = countTime.toFixed(2);
             }else{
                 document.getElementById("countTimer").textContent ="???";
             }
         },10);
 
         document.getElementById("countStop").onclick=function(){
-            clearInterval(interval);
+            clearInterval(countInterval);
 
             let difference=Math.abs(countTime-5);
             let points=Math.round(100-difference*20);
