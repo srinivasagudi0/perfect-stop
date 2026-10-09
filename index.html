@@ -157,6 +157,7 @@
     }
 
     let tap = document.getElementById("tap");
+    let startTime = performance.now()
     tap.onclick = function() {
         game.innerHTML= `
             <h2>TAP</h2>
@@ -170,6 +171,15 @@
         let hits = 0;
         let target = document.getElementById("target");
         target.onclick = function() {
+
+        if (hits === 5) {
+            let seconds = (performance.now() - startTime) / 1000;
+            game.innerHTML = `
+                <p>Completed in ${seconds.toFixed(2)} seconds!</p>
+            `;
+            target.style.display = "none";
+            return 
+        } // not sure if it is counting right
         hits++;
         document.getElementById("hit").textContent = hits;
 
