@@ -1,48 +1,5 @@
 <html>
-    <style>
-        body {
-            background: #001;
-            color: wheat;
-            font-family: monospace;
-            text-align: center;
-        }
-        button {
-            cursor: pointer;
-            color:white;
-            background-color: #333333c5;
-            border: 1px solid red;
-            border-radius: 6px;
-        }
-        button:hover {
-            background: #555;
-        }
-        #barGame{
-            margin:20px auto;
-            width:300px;
-            border:2px solid;
-            height:40px;
-            position: relative;
-        }
-        .tapArea #target {
-            position: absolute;
-            left:0;
-            top:0;
-        }
-        #marker{
-            position:absolute;
-            left:0;
-        }
-        #target{
-            position:absolute;
-            left:50%;
-        }     
-        .tapArea {
-            width:300px;
-            height: 250px;
-            border: 2px solid;
-            position: relative;
-        }
-    </style>
+    <style>body{background:#001;color:wheat;font-family:monospace;text-align:center}button{cursor:pointer;color:white;background-color:#333333c5;border:1px solid red;border-radius:6px}button:hover{background:#555}#barGame{margin:20px auto;width:300px;border:2px solid;height:40px;position:relative}.tapArea#target{position:absolute;left:0;top:0}#marker{position:absolute;left:0}#target{position:absolute;left:50%}.tapArea{width:300px;height:250px;border:2px solid;position:relative}</style>
     <body>
         <h1>Perfect Stop</h1>
         <p>Pick a game</p>
@@ -188,7 +145,7 @@
         `;
         let hits = 0;
         let target = document.getElementById("target");
-        target.onclick = function() {
+        target.onclick=function() {
         hits++;
         document.getElementById("hit").textContent = hits;
         if (hits === 5) {
