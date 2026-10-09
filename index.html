@@ -63,8 +63,9 @@
     let score=0;
     let maxScore=0;
     document.getElementById("score").textContent=score+" / "+maxScore;
-
+    let interval;
     stopButton.onclick = function() {
+        clearInterval(interval);
         let target = Math.random() * 10;
         target = target.toFixed(2);
         let runningTime = 0;
@@ -75,7 +76,7 @@
             <h1 id="timer">0.00</h1>
             <button id="hit">STOP</button>
         `;
-        let interval = setInterval(function() {
+        interval = setInterval(function() {
             runningTime+=0.01;
             document.getElementById("timer").textContent = runningTime.toFixed(2);
             
