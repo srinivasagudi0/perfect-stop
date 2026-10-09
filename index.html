@@ -16,7 +16,12 @@
         }
         #target {
             left: 0;
-
+        }
+        .tapArea {
+            width:300px;
+            height: 250px;
+            border: 2px solid;
+            position: relative;
         }
     </style>
     <body>
@@ -157,7 +162,9 @@
             <h2>TAP</h2>
             <p>Hit the target 5 times</p>
             <p>Hits: 0</p>
-            
+            <div class="tapArea">
+                <button id="target">Tap!</button>    
+            </div>
             <br/>
         `;
     }
