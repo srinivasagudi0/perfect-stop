@@ -1,25 +1,12 @@
 <html>
     <style>body{background:#001;color:wheat;font-family:monospace;text-align:center}button{cursor:pointer;color:white;background-color:#333333c5;border:1px solid red;border-radius:6px}button:hover{background:#555}#barGame{margin:20px auto;width:300px;border:2px solid;height:40px;position:relative}.tapArea#target{position:absolute;left:0;top:0}#marker{position:absolute;left:0}#target{position:absolute;left:50%}.tapArea{width:300px;height:250px;border:2px solid;position:relative}</style>
-    <body>
-        <h1>Perfect Stop</h1>
-        <p>Pick a game</p>
-        <p>The game starts right as you press the button</p>
-
-        <button id="stop">Stop</button>
-        <button id="bar">Bar</button>
-        <button id="count">Count</button>
-        <button id="tap">Tap</button>
-        <div id="game"></div>
-
-        <p>Score: <span id="score">0 / 0</span></p>
-        
-    </body>
+    <h1>Perfect Stop</h1><p>Pick a game</p><p>Press to start</p><button id="sp">Stop</button> <button id="b">Bar</button> <button id="c">Count</button> <button id="t">Tap</button><div id="g"></div><p>Score: <span id="s"> 0/0</span>
     <script>
-    let stopButton = document.getElementById("stop");
-    let bar = document.getElementById("bar");
+    let stopButton = document.getElementById("sp");
+    let bar = document.getElementById("b");
     let score=0;
     let maxScore=0;
-    document.getElementById("score").textContent=score+" / "+maxScore;
+    document.getElementById("s").textContent=score+" / "+maxScore;
     let interval;
     stopButton.onclick = function() {
         clearInterval(interval);
@@ -27,7 +14,7 @@
         target = target.toFixed(2);
         let runningTime = 0;
 
-        game.innerHTML = `
+        g.innerHTML = `
             <h2>STOP</h2>
             <p>Target: ${target}</p>
             <h1 id="timer">0.00</h1>
@@ -52,8 +39,8 @@
                 points=0;
             }
             score+=points;
-            document.getElementById("score").textContent=score+" / "+maxScore;
-            game.innerHTML += `
+            document.getElementById("s").textContent=score+" / "+maxScore;
+            g.innerHTML += `
             <p>You we ${difference} away!</p>
             `
         }
@@ -62,7 +49,7 @@
     bar.onclick = function() {
         let position =0;
         let direction=1;
-        game.innerHTML = `
+        g.innerHTML = `
             <h2>BAR</h2>
             <div id="barGame">
                 <span id="marker">|</span>
@@ -88,15 +75,15 @@
             score+=points;
             maxScore+=100;
 
-            document.getElementById("score").textContent=score+" / "+maxScore;
-            game.innerHTML +=`<p>+${points} points!</p>`;
+            document.getElementById("s").textContent=score+" / "+maxScore;
+            g.innerHTML +=`<p>+${points} points!</p>`;
         }
     };
-    let count = document.getElementById("count");
+    let count = document.getElementById("c");
     count.onclick = function() {
         let countTime=0;
-        let count = document.getElementById("count");
-        game.innerHTML=`
+        let count = document.getElementById("c");
+        g.innerHTML=`
         <h2>COUNT</h2>
         <p>Stop at 5 seconds</p>
         <h1 id="countTimer">0.00</h1>
@@ -122,19 +109,19 @@
             score+=points;
             maxScore+=100;
 
-            document.getElementById("score").textContent=score+" / "+maxScore;
-            game.innerHTML+=`
+            document.getElementById("s").textContent=score+" / "+maxScore;
+            g.innerHTML+=`
                 <p>You stopped at ${countTime.toFixed(2)}</p>
                 <p>+${points} points</p>
             `;
         }
     }
 
-    let tap = document.getElementById("tap");
+    let tap = document.getElementById("t");
     
     tap.onclick = function() {
         let startTime = performance.now()
-        game.innerHTML= `
+        g.innerHTML= `
             <h2>TAP</h2>
             <p>Hit the target 5 times</p>
             <p>Hits: <span id="hit">0</span></p>
@@ -153,9 +140,9 @@
             let points = Math.round(100 - seconds *10);
             score+=points;
             maxScore+=100;
-            document.getElementById("score").textContent = score + "/" + maxScore
+            document.getElementById("s").textContent = score + "/" + maxScore
 
-            game.innerHTML = `
+            g.innerHTML = `
                 <p>Completed in ${seconds.toFixed(2)} seconds!</p>
                 <p>+${points} points!</p>
             `;
