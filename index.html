@@ -1,52 +1,21 @@
-<html>
-    <style>body{background:#001;color:wheat;font-family:monospace;text-align:center}button{cursor:pointer;color:white;background-color:#333333c5;border:1px solid red;border-radius:6px}button:hover{background:#555}#barGame{margin:20px auto;width:300px;border:2px solid;height:40px;position:relative}.tapArea#target{position:absolute;left:0;top:0}#marker{position:absolute;left:0}#target{position:absolute;left:50%}.tapArea{width:300px;height:250px;border:2px solid;position:relative}</style>
-    <h1>Perfect Stop</h1><p>Pick a game</p><p>Press to start</p><button id="sp">Stop</button> <button id="b">Bar</button> <button id="c">Count</button> <button id="t">Tap</button><div id="g"></div><p>Score: <span id="s"> 0/0</span>
-    <script>
-    let stopButton = document.getElementById("sp");
-    let bar = document.getElementById("b");
-    let score=0;
-    let maxScore=0;
-    document.getElementById("s").textContent=score+" / "+maxScore;
-    let interval;
-    stopButton.onclick = function() {
-        clearInterval(interval);
-        let target = Math.random() * 10;
-        target = target.toFixed(2);
-        let runningTime = 0;
-
-        g.innerHTML = `
-            <h2>STOP</h2>
-            <p>Target: ${target}</p>
-            <h1 id="timer">0.00</h1>
-            <button id="hit">STOP</button>
-        `;
-        interval = setInterval(function() {
-            runningTime+=0.01;
-            document.getElementById("timer").textContent = runningTime.toFixed(2);
-            
-            if (runningTime >=10) {
-                runningTime=0;
-            }
-        }, 10);
-        document.getElementById("hit").onclick = function() {
-            clearInterval(interval);
-            
-            let difference = Math.abs(runningTime - target);
-            difference =  difference.toFixed(2);
-            maxScore+=100;
-            let points = Math.round(100-difference*10);
+<style>body{background:#001;color:wheat;font-family:monospace;text-align:center}button{cursor:pointer;color:white;background-color:#333333c5;border:1px solid red;border-radius:6px}button:hover{background:#555}#barGame{margin:20px auto;width:300px;border:2px solid;height:40px;position:relative}.tapArea#target{position:absolute;left:0;top:0}#marker{position:absolute;left:0}#target{position:absolute;left:50%}.tapArea{width:300px;height:250px;border:2px solid;position:relative}</style>
+<h1>Perfect Stop</h1><p>Pick a game</p><p>Press to start</p><button id="sp">Stop</button> <button id="b">Bar</button> <button id="c">Count</button> <button id="t">Tap</button><div id="g"></div><p>Score: <span id="s"> 0/0</span>
+<script>let SB=document.getElementById("sp");let b=document.getElementById("b");let s=0;let ms=0;document.getElementById("s").textContent=s+"/"+ms;let i;
+    SB.onclick=function(){clearInterval(i);let tm=Math.random()*10;tm=tm.toFixed(2);let rt=0;g.innerHTML=`<h2>STOP</h2><p>Target: ${tm}</p><h1 id="x">0.00</h1><button id="hit">STOP</button>`;i=setInterval(function(){rt+=0.01;document.getElementById("x").textContent=rt.toFixed(2);if(rt>=10){rt=0;}},10);
+        document.getElementById("hit").onclick=function(){
+            clearInterval(i);let d=Math.abs(rt-tm);d=d.toFixed(2);ms+=100;let points=Math.round(100-d*10);
             if(points<0){
                 points=0;
             }
-            score+=points;
-            document.getElementById("s").textContent=score+" / "+maxScore;
+            s+=points;
+            document.getElementById("s").textContent=s+" / "+ms;
             g.innerHTML += `
-            <p>You we ${difference} away!</p>
+            <p>You were ${d} away!</p>
             `
         }
     };
 
-    bar.onclick = function() {
+    b.onclick = function() {
         let position =0;
         let direction=1;
         g.innerHTML = `
@@ -72,10 +41,10 @@
             if(points<0){
                 points=0;
             }
-            score+=points;
-            maxScore+=100;
+            s+=points;
+            ms+=100;
 
-            document.getElementById("s").textContent=score+" / "+maxScore;
+            document.getElementById("s").textContent=s+" / "+ms;
             g.innerHTML +=`<p>+${points} points!</p>`;
         }
     };
@@ -102,14 +71,14 @@
         document.getElementById("countStop").onclick=function(){
             clearInterval(countInterval);
 
-            let difference=Math.abs(countTime-5);
-            let points=Math.round(100-difference*20);
+            let d=Math.abs(countTime-5);
+            let points=Math.round(100-d*20);
 
             if(points<0) {points=0;}
-            score+=points;
-            maxScore+=100;
+            s+=points;
+            ms+=100;
 
-            document.getElementById("s").textContent=score+" / "+maxScore;
+            document.getElementById("s").textContent=s+" / "+ms;
             g.innerHTML+=`
                 <p>You stopped at ${countTime.toFixed(2)}</p>
                 <p>+${points} points</p>
@@ -138,9 +107,9 @@
         if (hits === 5) {
             let seconds = (performance.now() - startTime) / 1000;
             let points = Math.round(100 - seconds *10);
-            score+=points;
-            maxScore+=100;
-            document.getElementById("s").textContent = score + "/" + maxScore
+            s+=points;
+            ms+=100;
+            document.getElementById("s").textContent = s + "/" + ms
 
             g.innerHTML = `
                 <p>Completed in ${seconds.toFixed(2)} seconds!</p>
@@ -156,6 +125,4 @@
         document.getElementById("target").style.top = y+"px";
         }
     }
-   
-    </script>
-</html>
+</script>
