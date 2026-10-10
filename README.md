@@ -1,7 +1,11 @@
 # perfect-stop
 
-Four tiny precision games packed into one tiny arcade
+Four tiny precision games in one arcade.
 
-## Stop
+## Games
+- **Stop:** Stop at the target time.
+- **Bar:** Stop the moving bar at X.
+- **Count:** Stop at 5 seconds.
+- **Tap:** Hit the target 5 times.
 
-CLick it 
+Get the highest score!
